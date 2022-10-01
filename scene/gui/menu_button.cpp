@@ -51,6 +51,12 @@ void MenuButton::shortcut_input(const Ref<InputEvent> &p_event) {
 
 		if (popup->activate_item_by_event(p_event, false)) {
 			accept_event();
+			return;
+		}
+
+		if (get_shortcut().is_valid()) {
+			on_action_event(p_event);
+			accept_event();
 		}
 	}
 }
